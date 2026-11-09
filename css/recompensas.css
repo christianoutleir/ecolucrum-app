@@ -1,0 +1,17 @@
+/* Tela Recompensas: cupons e carteira */
+.coupon{display:grid;grid-template-columns:1fr auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.coupon .l{padding:14px;min-width:0}
+.coupon .l h3{font:700 17px/1.2 var(--f-display)}
+.coupon .l p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.coupon .r{border-left:2px dashed var(--line);padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:104px;position:relative}
+.coupon .r::before,.coupon .r::after{content:"";position:absolute;left:-9px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:1px solid var(--line)}
+.coupon .r::before{top:-9px}.coupon .r::after{bottom:-9px}
+.cost{font:700 16px var(--f-num);font-variant-numeric:tabular-nums}
+.btn-redeem{border:0;background:var(--hero);color:#F4F8F1;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600}
+.btn-redeem:disabled{background:var(--line);color:var(--muted);cursor:not-allowed}
+.need{font-size:11px;color:var(--muted);text-align:center}
+.tag{display:inline-block;font:600 10px var(--f-body);text-transform:uppercase;letter-spacing:.08em;background:var(--leaf-soft);color:var(--leaf);border-radius:6px;padding:3px 6px;margin-bottom:6px}
+
+.wallet .code{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.wallet .code b{font:700 14px var(--f-num);letter-spacing:.06em;word-break:break-all}
+.btn-ghost{border:1px solid var(--line);background:transparent;border-radius:10px;padding:6px 10px;font-size:12px}

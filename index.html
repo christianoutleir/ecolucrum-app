@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Plataforma gamificada que incentiva a adoção de hábitos sustentáveis por meio de missões, EcoPontos e recompensas.">
+  <title>EcoHabitus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/inicio.css">
+  <link rel="stylesheet" href="css/missoes.css">
+  <link rel="stylesheet" href="css/recompensas.css">
+  <link rel="stylesheet" href="css/progresso.css">
+  <link rel="stylesheet" href="css/componentes.css">
+
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <img class="logo logo-l" alt="Ecolucrum" src="assets/img/logo-claro.png">
+      <img class="logo logo-d" alt="Ecolucrum" src="assets/img/logo-escuro.png">
+    </div>
+    <div class="pts-pill" id="pill" aria-label="Saldo de EcoPontos"><i></i><span id="pillPts">0</span></div>
+  </header>
+
+  <!-- ===================== INÍCIO ===================== -->
+  <section class="view" id="v-inicio">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Seu saldo</div>
+        <div class="big"><span id="heroPts">0</span><small>EcoPontos</small></div>
+        <div class="lvl"><b id="lvlName">Semente</b> · <span id="lvlNext"></span></div>
+        <div class="bar"><span id="lvlBar" style="width:0"></span></div>
+      </div>
+      <svg id="plant" viewBox="0 0 96 110" aria-hidden="true"></svg>
+      <p class="slogan">Hábitos sustentáveis que geram recompensas.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat fire"><b id="stStreak">0</b><span>dias seguidos</span></div>
+      <div class="stat water"><b id="stWater">0 L</b><span>água poupada</span></div>
+      <div class="stat co2"><b id="stCo2">0 kg</b><span>CO₂e evitado</span></div>
+    </div>
+
+    <div class="stack">
+      <div class="row"><h2>Missões de hoje</h2><span class="muted" id="todayCount"></span></div>
+      <div class="stack" id="homeMissions"></div>
+      <button class="btn-ghost" style="align-self:flex-start" data-go="missoes">Ver todas as missões</button>
+    </div>
+  </section>
+
+  <!-- ===================== MISSÕES ===================== -->
+  <section class="view" id="v-missoes" hidden>
+    <div>
+      <div class="eyebrow">Registre o que fez hoje</div>
+      <h2 style="margin-top:6px">Missões</h2>
+      <p class="note" style="margin:6px 0 0">Missões marcadas com <span class="cam"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.5" r="3.5"/></svg>foto</span> só pontuam depois que a foto é aprovada.</p>
+    </div>
+    <div class="weekly">
+      <div class="row"><b style="font-family:var(--f-display);font-size:17px">Desafio da semana</b><span class="cost" style="font-size:13px">+150</span></div>
+      <div style="font-size:14px">Use garrafa reutilizável em 5 dias diferentes nos últimos 7 dias.</div>
+      <div class="dots" id="weekDots"></div>
+      <div class="note" id="weekNote"></div>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar categoria" id="filters"></div>
+    <div class="stack" id="allMissions"></div>
+  </section>
+
+  <!-- ===================== RECOMPENSAS ===================== -->
+  <section class="view" id="v-recompensas" hidden>
+    <div>
+      <div class="eyebrow">Troque seus EcoPontos</div>
+      <h2 style="margin-top:6px">Recompensas</h2>
+      <p class="note" style="margin:6px 0 0">Resgates simulados para demonstração. Nenhum cupom é válido em lojas reais.</p>
+    </div>
+    <div class="stack" id="rewards"></div>
+    <div class="stack wallet" id="walletWrap">
+      <h2 style="font-size:18px">Meus cupons</h2>
+      <div class="stack" id="wallet"></div>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRESSO ===================== -->
+  <section class="view" id="v-progresso" hidden>
+    <div><div class="eyebrow">Seu impacto</div><h2 style="margin-top:6px">Progresso</h2></div>
+    <div class="chart">
+      <div class="row" style="margin-bottom:8px"><b style="font-size:14px">EcoPontos nos últimos 7 dias</b><span class="note" id="weekSum"></span></div>
+      <svg id="chart" viewBox="0 0 320 150" role="img" aria-label="Gráfico de EcoPontos por dia"></svg>
+    </div>
+    <div class="stack">
+      <div class="row"><h2 style="font-size:18px">Minhas comprovações</h2><span class="note" id="proofCount"></span></div>
+      <div class="proofs" id="proofs"></div>
+      <div class="empty" id="proofsEmpty">Nenhuma foto enviada ainda. Conclua a missão "Separei os recicláveis" para enviar a primeira.</div>
+    </div>
+    <div class="stack">
+      <h2 style="font-size:18px">Níveis</h2>
+      <div class="levels" id="levels"></div>
+    </div>
+    <div class="stack log">
+      <h2 style="font-size:18px">Histórico</h2>
+      <ul id="log"></ul>
+    </div>
+    <p class="note">Impacto calculado com estimativas médias por ação. Histórico inicial é de exemplo.</p>
+    <button class="btn-ghost" id="reset" style="align-self:flex-start">Reiniciar demonstração</button>
+  </section>
+</div>
+
+<!-- ===================== NAVEGAÇÃO ===================== -->
+<nav class="tabs" aria-label="Navegação">
+  <div class="in">
+    <button data-tab="inicio" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Início</button>
+    <button data-tab="missoes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Missões</button>
+    <button data-tab="recompensas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1.5S12 8 12 8Zm0 0c2-4 6-4 6-1.5S12 8 12 8Z"/></svg>Recompensas</button>
+    <button data-tab="progresso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Progresso</button>
+  </div>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Modal: confirmar resgate -->
+<div class="modal" id="modal" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <h2 id="mTitle" style="font-size:20px"></h2><p id="mBody" class="muted" style="margin:0"></p>
+  <div class="acts"><button id="mCancel">Cancelar</button><button class="pri" id="mOk">Resgatar</button></div>
+</div></div>
+
+<!-- Modal: comprovação por foto -->
+<div class="modal" id="proofModal" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+  <div><div class="eyebrow">Comprovação por foto</div><h2 id="pTitle" style="font-size:20px;margin-top:6px"></h2></div>
+  <div class="tip"><b>O que fotografar</b><span id="pHint"></span></div>
+  <label class="drop" for="proofFile">
+    <input type="file" id="proofFile" accept="image/*" capture="environment" aria-label="Tirar ou escolher foto">
+    <span id="pEmpty" class="stack" style="align-items:center;gap:4px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+      <b>Tirar foto</b><span class="note">No celular abre a câmera. No computador, escolha um arquivo.</span>
+    </span>
+    <img id="pPreview" alt="Prévia da foto enviada" hidden>
+  </label>
+  <ul class="checks" id="pChecks" hidden></ul>
+  <p class="note" style="margin:0">MVP: a análise é automática e simulada. Os pontos entram após a aprovação.</p>
+  <div class="acts"><button id="pCancel">Cancelar</button><button class="pri" id="pSend" disabled>Enviar foto</button></div>
+</div></div>
+
+</body>
+</html>

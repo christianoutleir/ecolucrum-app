@@ -1,0 +1,17 @@
+/* Tela Início: card de saldo (hero) e estatísticas */
+.hero{background:var(--hero);color:#F4F8F1;border-radius:22px;padding:20px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;position:relative;overflow:hidden}
+.hero .eyebrow{color:rgba(244,248,241,.75)}
+.hero .big{font:800 46px/1 var(--f-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-top:8px}
+.hero .big small{font:600 14px var(--f-body);letter-spacing:0;opacity:.8;margin-left:4px}
+.hero .lvl{margin-top:14px;font-size:13px}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.22);overflow:hidden;margin-top:6px}
+.bar span{display:block;height:100%;background:var(--sun);border-radius:inherit;transition:width .6s ease}
+.hero svg{width:96px;height:110px}
+.hero p.slogan{grid-column:1/-1;margin:2px 0 0;font-size:13px;opacity:.85}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px}
+.stat b{display:block;font:700 19px/1.1 var(--f-num);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+.stat.water b{color:var(--water)} .stat.co2 b{color:var(--leaf)} .stat.fire b{color:var(--sun)}
+@media (max-width:360px){.hero .big{font-size:38px}.hero svg{width:76px}}

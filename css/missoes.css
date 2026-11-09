@@ -1,0 +1,28 @@
+/* Tela Missões: cards de missão, desafio da semana e filtros */
+.mission{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px}
+.mission .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--leaf-soft);color:var(--leaf)}
+.mission .ico.w{background:var(--water-soft);color:var(--water)}
+.mission .ico svg{width:22px;height:22px}
+.mission .thumb{width:44px;height:44px;border-radius:12px;object-fit:cover;display:block;border:1px solid var(--line)}
+.mission h3{font:600 15px/1.25 var(--f-body)}
+.mission .meta{font-size:12px;color:var(--muted);margin-top:2px}
+.mission .meta em{font-style:normal;font-family:var(--f-num);color:var(--sun)}
+.cam{display:inline-flex;align-items:center;gap:3px;color:var(--water);font-weight:600}
+.cam svg{width:13px;height:13px}
+.btn-do{border:0;background:var(--ink);color:var(--bg);border-radius:12px;padding:9px 13px;font-weight:600;font-size:13px;white-space:nowrap}
+.btn-do.photo{background:var(--water);color:#F4F8F1}
+.btn-do:active{transform:scale(.96)}
+.mission.done{background:transparent;border-style:dashed}
+.mission.done h3{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.mission.pending{background:transparent;border-color:var(--sun);border-style:dashed}
+.stamp{font:700 11px var(--f-num);color:var(--leaf);border:1.5px solid var(--leaf);border-radius:8px;padding:5px 8px;transform:rotate(-6deg);letter-spacing:.04em;white-space:nowrap}
+.stamp.wait{color:var(--sun);border-color:var(--sun)}
+
+.weekly{background:var(--sun-soft);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.dots{display:flex;gap:6px}
+.dots i{flex:1;height:10px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.dots i.on{background:var(--sun);border-color:var(--sun)}
+
+.filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 12px;font-size:13px;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}

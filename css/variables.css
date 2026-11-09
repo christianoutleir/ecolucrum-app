@@ -1,0 +1,18 @@
+/* Cores, fontes e medidas (tema claro, escuro automático e escuro forçado) */
+:root{
+  --bg:#EDF0E6; --surface:#F8FAF4; --line:#D3DACB; --ink:#1C2A21; --muted:#5D6B60;
+  --leaf:#2D6A47; --leaf-soft:#D6E7D9; --sun:#D99A1E; --sun-soft:#F6E6C1; --water:#2C6E8F; --water-soft:#D5E6EE;
+  --danger:#A7432F; --code-bg:#1C2A21; --hero:#2D6A47; --code-fg:#DCE8DA;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Instrument Sans", system-ui, -apple-system, sans-serif;
+  --f-num:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --nav-h:64px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121A15; --surface:#1A241E; --line:#2B3830; --ink:#E4ECE3; --muted:#9AAA9D;
+  --leaf:#6FBF8E; --leaf-soft:#20372A; --sun:#F0B848; --sun-soft:#3A2E14; --water:#6FB3D3; --water-soft:#17303C;
+  --danger:#E07F68; --code-bg:#0B110D; --hero:#245C3E; --code-fg:#CFE0D2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121A15; --surface:#1A241E; --line:#2B3830; --ink:#E4ECE3; --muted:#9AAA9D;
+  --leaf:#6FBF8E; --leaf-soft:#20372A; --sun:#F0B848; --sun-soft:#3A2E14; --water:#6FB3D3; --water-soft:#17303C;
+  --danger:#E07F68; --code-bg:#0B110D; --hero:#245C3E; --code-fg:#CFE0D2; color-scheme:dark}
